@@ -156,7 +156,7 @@
        
       </div>
         <div class="modal-footer ">
-        <button type="button" class="btn btn-success" onclick="Javascript:deleteRow(sessionStorage.getItem('iduser'));"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+        <button type="button" id="btnConfirmDelete" data-dismiss="modal" class="btn btn-success" onclick="Javascript:deleteRow(sessionStorage.getItem('selectedRowIndex'),sessionStorage.getItem('iduser'));"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
         <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
       </div>
         </div>

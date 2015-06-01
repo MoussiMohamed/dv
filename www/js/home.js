@@ -58,8 +58,8 @@ row = table.insertRow(rowCount);
     row.insertCell(2).innerHTML= jsObj.d[i].surname;
     row.insertCell(3).innerHTML= jsObj.d[i].email;
     row.insertCell(4).innerHTML= jsObj.d[i].password;
-     row.insertCell(5).innerHTML='<input type="button"  class="btn btn-primary btn-xs" value = "Edit" onClick="Javascript:changeScreanToEdit(this)" >';
-     row.insertCell(6).innerHTML='<input type="button" class="btn btn-danger btn-xs" value = "Edit" data-title="Delete" data-toggle="modal" onClick="Javascript:getIdUser(this)" data-target="#delete" >';
+     row.insertCell(5).innerHTML='<input type="button"  class="btn btn-primary btn-xs" value = "Modifier" onClick="Javascript:changeScreanToEdit(this)" >';
+     row.insertCell(6).innerHTML='<input type="button" class="btn btn-danger btn-xs" value = "Supprimer" data-title="Delete" data-toggle="modal" onClick="Javascript:getIdUser(this)" data-target="#delete" >';
 //    row.insertCell(6).innerHTML='<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button type="button" onClick="Javascript:getIdUser(this)" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>';
    
   }
@@ -92,19 +92,15 @@ var indexs = obj.parentNode.parentNode.rowIndex;
 var elemts = t.rows[indexs].cells[0].innerHTML;
 
 sessionStorage.setItem("iduser",elemts);
-
+sessionStorage.setItem("selectedRowIndex",indexs);
 }
 
 
-function deleteRow(idUsr) {
+function deleteRow(selectedRow,idUsr) {
     var table = document.getElementById("mytable");
-//            var rowCount = table.rows.length;
-//            
-//    		var row = table.insertRow(rowCount);
-//    
-    var index = table.parentNode.parentNode.rowIndex;
+            var rowCount = table.rows.length;
 
-
+alert(sessionStorage.getItem("selectedRowIndex"));
 updReq = getXMLHttp();
     // Create some variables we need to send to our PHP file
     var url = "http://127.0.0.1:8880/e_advRes/www/server/deleteUser.php";
@@ -117,7 +113,8 @@ updReq = getXMLHttp();
                 if(updReq.readyState == 4 && updReq.status == 200) {
 HandleResponseDelete(updReq.responseText);
 
-table.deleteRow(index);
+table.deleteRow(selectedRow);
+
 
    
     }
