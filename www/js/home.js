@@ -1,4 +1,10 @@
 $(document).ready(function() {
+	if(sessionStorage.getItem("UserLogged") == null){
+		alert("Permission non accordée !\nVeuillez saisir vos paramètres d'accès");
+		
+		window.location.replace("authen.html");
+		sessionStorage.clear();
+	}else{
 
 	$.ajax({    //create an ajax request to load_page.php
         type: "GET",
@@ -7,7 +13,7 @@ $(document).ready(function() {
         success: function(response){                    
           
             var t = $('#myTable').DataTable();
-            var counter = 1;
+            
             
             for (var i = 0; i < response.d.length-1; i++) { 
             	
@@ -21,17 +27,20 @@ $(document).ready(function() {
                     '<input type="button" class="btn btn-danger btn-xs" value = "Supprimer" data-title="Delete" data-toggle="modal" onClick="Javascript:getIdUser(this)" data-target="#delete" >'
                 ] ).draw();
          
-                counter++;
+              
             }
         }
 
     });
 	
-    
+ }
 } );
 
 
-
+function logOut(){
+	sessionStorage.clear();
+	window.location.replace("authen.html");
+}
 
 function getXMLHttp()
 {
