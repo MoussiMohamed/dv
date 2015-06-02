@@ -57,15 +57,21 @@
     <script src="js/app.js"></script>           <!-- for your event code, see README and file comments for details -->
     <script src="js/init-app.js"></script>      <!-- for your init code, see README and file comments for details -->
     <script src="xdk/init-dev.js"></script>     <!-- normalizes device and document ready events, see file for details -->
+
+<!--     <script type="application/javascript" src="jquery-ui-1.11.2/external/jquery/jquery.js"></script> -->
+<!--     <script type="application/javascript" src="bootstrap-3.3.4-dist/js/bootstrap.min.js"></script> -->
+    
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">   
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!--import jquery js for register and login form-->
     <script type="application/javascript" src="js/home.js"></script>
     <script type="application/javascript" src="js/editUser.js"></script>
-    <script type="application/javascript" src="jquery-ui-1.11.2/external/jquery/jquery.js"></script>
-    <script type="application/javascript" src="bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
-    <!--import jquery js for register and login form-->
-
     </head>
 
-<body onload="doLoadUsers();">
+<body>
 
 <div class="container">
 	<div class="row">
@@ -76,34 +82,24 @@
         <a href="index.html">Ajouter un nouveau utilisateur</a>
         <div class="table-responsive">
 
-              <table id="mytable" class="table table-bordred table-striped">
-                   
-                   <thead>
-                   
-                   
-                   <th>Id</th>
-                    <th>Nom</th>
+      
+      
+      
+      <table id="myTable" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Id</th>
+                     <th>Nom</th>
                      <th>Prenom</th>
                      <th>Adresse e-mail</th>
                      <th>Mot de passe</th>
-                      <th>Modifier</th>
-                      
-                       <th>Supprimer</th>
-                   </thead>
-        
-</table>
-
-<div class="clearfix"></div>
-<ul class="pagination pull-right">
-  <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-  <li class="active"><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
-  <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-</ul>
-                
+                     <th>Modifier</th>
+                     <th>Supprimer</th>
+            </tr>
+        </thead>
+ 
+    </table>
+                    
             </div>
             
         </div>
@@ -167,4 +163,5 @@
     <div id="responseHome">response div home</div>
 
 </body>
+
 </html>

@@ -1,3 +1,37 @@
+$(document).ready(function() {
+
+	$.ajax({    //create an ajax request to load_page.php
+        type: "GET",
+        url: "http://127.0.0.1:8880/e_advRes/www/server/AfficheUser.php",             
+        dataType: "json",   //expect json to be returned                
+        success: function(response){                    
+          
+            var t = $('#myTable').DataTable();
+            var counter = 1;
+            
+            for (var i = 0; i < response.d.length-1; i++) { 
+            	
+                t.row.add( [
+                    response.d[i].id_user,
+                    response.d[i].name,
+                    response.d[i].surname,
+                    response.d[i].email,
+                    response.d[i].password,
+                    '<input type="button"  class="btn btn-primary btn-xs" value = "Modifier" onClick="Javascript:changeScreanToEdit(this)" >',
+                    '<input type="button" class="btn btn-danger btn-xs" value = "Supprimer" data-title="Delete" data-toggle="modal" onClick="Javascript:getIdUser(this)" data-target="#delete" >'
+                ] ).draw();
+         
+                counter++;
+            }
+        }
+
+    });
+	
+    
+} );
+
+
+
 
 function getXMLHttp()
 {
@@ -31,50 +65,6 @@ function getXMLHttp()
   return xmlHttp;
 }
 
-function doLoadUsers(){
-	 // Create our XMLHttpRequest object
-    updReq = getXMLHttp();
-    // Create some variables we need to send to our PHP file
-    var url = "http://127.0.0.1:8880/e_advRes/www/server/AfficheUser.php";
-    
-    
-	updReq.open('POST', url, true);
-        updReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        
-        updReq.onreadystatechange = function() {//Call a function when the state changes.
-                if(updReq.readyState == 4 && updReq.status == 200) {
-                        
-            var data=updReq.responseText;
-            var jsObj=JSON.parse(data);
-            var table = document.getElementById("mytable");
-            var rowCount = table.rows.length;
-    		var row = table.insertRow(rowCount);
-for (var i = 0; i < jsObj.d.length; i++) { 
-
-row = table.insertRow(rowCount);
-
-    row.insertCell(0).innerHTML= jsObj.d[i].id_user;
-    row.insertCell(1).innerHTML= jsObj.d[i].name;
-    row.insertCell(2).innerHTML= jsObj.d[i].surname;
-    row.insertCell(3).innerHTML= jsObj.d[i].email;
-    row.insertCell(4).innerHTML= jsObj.d[i].password;
-     row.insertCell(5).innerHTML='<input type="button"  class="btn btn-primary btn-xs" value = "Modifier" onClick="Javascript:changeScreanToEdit(this)" >';
-     row.insertCell(6).innerHTML='<input type="button" class="btn btn-danger btn-xs" value = "Supprimer" data-title="Delete" data-toggle="modal" onClick="Javascript:getIdUser(this)" data-target="#delete" >';
-//    row.insertCell(6).innerHTML='<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button type="button" onClick="Javascript:getIdUser(this)" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>';
-   
-  }
-
-
-HandleResponse("data loaded successfully!");
-alert("data loaded");
-
-    }
-        }
-        updReq.send(null);
-
-}
-
-
 
 // HandleResponse
 function HandleResponse(response)
@@ -83,7 +73,8 @@ function HandleResponse(response)
 }
 
 function getIdUser(obj){
-    var t = document.getElementById("mytable");
+    var t = document.getElementById("myTable");
+    
     var rowCounts = t.rows.length;
     
 	var row = t.insertRow(rowCounts);
@@ -97,14 +88,12 @@ sessionStorage.setItem("selectedRowIndex",indexs);
 
 
 function deleteRow(selectedRow,idUsr) {
-    var table = document.getElementById("mytable");
+    var table = document.getElementById("myTable");
             var rowCount = table.rows.length;
 
-alert(sessionStorage.getItem("selectedRowIndex"));
 updReq = getXMLHttp();
     // Create some variables we need to send to our PHP file
     var url = "http://127.0.0.1:8880/e_advRes/www/server/deleteUser.php";
-    
     
 	updReq.open('POST', url, true);
         updReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -127,7 +116,7 @@ table.deleteRow(selectedRow);
 
 
 function editUser(obj) {
-    var table = document.getElementById("mytable");
+    var table = document.getElementById("myTable");
             var rowCount = table.rows.length;
             
     		var row = table.insertRow(rowCount);
@@ -154,12 +143,11 @@ table.deleteRow(index);
         }
         updReq.send(vars);
     
-    
-    
 }
 
 function HandleResponseDelete(response)
 {
   document.getElementById('responseHome').innerHTML = response;
 }
+
 

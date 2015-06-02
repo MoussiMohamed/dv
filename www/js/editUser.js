@@ -31,7 +31,7 @@ function getXMLHttp()
 }
 
 function changeScreanToEdit(id_User){
-	var table = document.getElementById("mytable");
+	var table = document.getElementById("myTable");
             var rowCount = table.rows.length;
             
     		var row = table.insertRow(rowCount);
@@ -68,8 +68,8 @@ function doEditUser(){
        
         updReq.onreadystatechange = function() {//Call a function when the state changes.
                 if(updReq.readyState == 4 && updReq.status == 200) {
-                        HandleResponse(updReq.responseText);
-                        alert(updReq.responseText);
+                	HandleResponseEdit(updReq.responseText);
+                        
                         window.location.replace("home.html");
                 }
         }
@@ -86,7 +86,7 @@ function doGetDataForEdit(){
 }
 
 // HandleResponse
-function HandleResponse(response)
+function HandleResponseEdit(response)
 {
   document.getElementById('ResponseDiv').innerHTML = response;
 }

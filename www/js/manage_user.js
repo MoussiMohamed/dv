@@ -48,7 +48,7 @@ function doSaveUser(){
         updReq.onreadystatechange = function() {//Call a function when the state changes.
                 if(updReq.readyState == 4 && updReq.status == 200) {
                         HandleResponse(updReq.responseText);
-                        alert(updReq.responseText);
+                        
                         window.location.replace("authen.html");
                 }
         }
