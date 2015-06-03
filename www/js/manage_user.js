@@ -1,3 +1,31 @@
+$("document").ready(function(){
+  $("#register-form").submit(function(){
+    var data = {
+      "name": $("#name").val(),
+      "surname": $("#surname").val(),
+      "email": $("#email").val(),
+      "password": $("#password").val(),
+    };
+    
+    //data = $(this).serialize() + "&" + $.param(data);
+    $.ajax({
+    	
+      type: "POST",
+      dataType: "json",
+      url: "http://127.0.0.1:8880/e_advRes/www/server/manage_user.php", //Relative or absolute path to response.php file
+      data: data,
+      success: function(data) {
+        alert(JSON.stringify(data));
+
+       // alert("Form submitted successfully.\nReturned json: " + data["json"]);
+      }
+    });
+    return false;
+  });
+});
+
+
+      
 function getXMLHttp()
 {
   var xmlHttp
@@ -37,19 +65,25 @@ function doSaveUser(){
     var url = "http://127.0.0.1:8880/e_advRes/www/server/manage_user.php";
     
     var name = document.getElementById("name").value;
+    
     var surname = document.getElementById("surname").value;
+    
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
+    	
+    
     var vars = "name="+name+"&surname="+surname+"&email="+email+"&password="+password;
     
 	updReq.open('POST', url, true);
         updReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-       
+       updReq.setRequestHeader("Access-Control-Allow-Origin", "*");
+  
+      
         updReq.onreadystatechange = function() {//Call a function when the state changes.
                 if(updReq.readyState == 4 && updReq.status == 200) {
                         HandleResponse(updReq.responseText);
                         
-                        window.location.replace("authen.html");
+                     //   window.location.replace("authen.html");
                 }
         }
         updReq.send(vars);
