@@ -68,7 +68,7 @@ function doEditUser(){
        
         updReq.onreadystatechange = function() {//Call a function when the state changes.
                 if(updReq.readyState == 4 && updReq.status == 200) {
-                	HandleResponseEdit(updReq.responseText);
+                	//HandleResponseEdit(updReq.responseText);
                         
                         window.location.replace("home.html");
                 }

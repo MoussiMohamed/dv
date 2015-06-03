@@ -38,14 +38,18 @@ function doAuthentif(){
 
     email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
-
+if(email == "" && password == "")
+{
+	alert("Veuillez entrer vous paramètres d'accès")
+	}
+	else{
     var vars = "email="+email+"&password="+password;
 	updReq.open('POST', url, true);
         updReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
        
         updReq.onreadystatechange = function() {//Call a function when the state changes.
                 if(updReq.readyState == 4 && updReq.status == 200) {
-                        HandleResponse(updReq.responseText);
+                       // HandleResponse(updReq.responseText);
                         if(updReq.responseText == "authentification reussie"){
                         	sessionStorage.setItem("UserLogged",email);
                         	
@@ -54,10 +58,11 @@ function doAuthentif(){
                 }
         }
         updReq.send(vars);
+       
        }
 
 
-
+}
 // HandleResponse
 function HandleResponse(response)
 {

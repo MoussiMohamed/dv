@@ -20,7 +20,7 @@ $("document").ready(function(){
 
 				if (d == "Successfully Registered!") {
 
-					window.location.replace("authen.html");
+					window.location.replace("index.html");
 				}
 
        // alert("Form submitted successfully.\nReturned json: " + data["json"]);

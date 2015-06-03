@@ -61,7 +61,7 @@
 		<!-- normalizes device and document ready events, see file for details -->
 		<script type           = "application/javascript" src="jquery-ui-1.11.2/external/jquery/jquery.js"></script>
 		<!--import jquery js for register and login form-->
-		<script type           = "application/javascript" src="js/manage_user.js"></script>
+		<script type           = "application/javascript" src="js/authentif.js"></script>
 
 	</head>
 
@@ -77,11 +77,12 @@
 					<div class          = "panel panel-login">
 						<div class         = "panel-heading">
 							<div class        = "row">
+								
 								<div class       = "col-xs-6">
-									<a href         = "authen.html" id="login-form-link">S'authentifier</a>
+									<a href         = "" class="active" id="register-form-link">S'authentifier</a>
 								</div>
 								<div class       = "col-xs-6">
-									<a href         = "" class="active" id="register-form-link">S'inscrire</a>
+									<a href         = "inscription.html" class="" id="register-form-link">S'inscrire</a>
 								</div>
 							</div>
 							<hr>
@@ -91,12 +92,7 @@
 								<div class       = "col-lg-12">
 
 									<form id        = "register-form" action="" method="post" role="form" style="display: block;">
-										<div class     = "form-group">
-											<input type   = "text" name="name" id="name" required="require" tabindex="1" class="form-control" placeholder="Nom" value="">
-										</div>
-										<div class     = "form-group">
-											<input type   = "text" name="surname" id="surname" required="require" tabindex="1" class="form-control" placeholder="Prenom" value="">
-										</div>
+									
 										<div class     = "form-group">
 											<input type   = "email" name="email" id="email" required="require" tabindex="1" class="form-control" placeholder="Adresse e-mail" value="">
 										</div>
@@ -107,7 +103,7 @@
 										<div class     = "form-group">
 											<div class    = "row">
 												<div class   = "col-sm-6 col-sm-offset-3">
-													<input type = "submit" id="btnSaveUser" tabindex="3" class="form-control btn btn-register" value="Enregistrer" >
+													<input type = "button" id="btnAuthen" tabindex="3" class="form-control btn btn-login" value="Connexion" onClick="doAuthentif();">
 												</div>
 											</div>
 										</div>
@@ -121,9 +117,9 @@
 			</div>
 		</div>
 
-		<div id                = "ResponseDiv">
-			responsive div
-		</div>
+		<!-- <div id                = "ResponseAuth">
+			
+		</div> -->
 
 	</body>
 </html>

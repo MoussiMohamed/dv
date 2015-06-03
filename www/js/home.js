@@ -2,7 +2,7 @@ $(document).ready(function() {
 	if(sessionStorage.getItem("UserLogged") == null){
 		alert("Permission non accordée !\nVeuillez saisir vos paramètres d'accès");
 		
-		window.location.replace("authen.html");
+		window.location.replace("index.html");
 		sessionStorage.clear();
 	}else{
 
@@ -39,7 +39,7 @@ $(document).ready(function() {
 
 function logOut(){
 	sessionStorage.clear();
-	window.location.replace("authen.html");
+	window.location.replace("index.html");
 }
 
 function getXMLHttp()
@@ -109,7 +109,7 @@ updReq = getXMLHttp();
         var vars="index="+idUsr;
         updReq.onreadystatechange = function() {//Call a function when the state changes.
                 if(updReq.readyState == 4 && updReq.status == 200) {
-HandleResponseDelete(updReq.responseText);
+//HandleResponseDelete(updReq.responseText);
 
 table.deleteRow(selectedRow);
 
@@ -143,7 +143,7 @@ updReq = getXMLHttp();
         var vars="index="+elemt;
         updReq.onreadystatechange = function() {//Call a function when the state changes.
                 if(updReq.readyState == 4 && updReq.status == 200) {
-HandleResponse(updReq.responseText);
+//HandleResponse(updReq.responseText);
 
 table.deleteRow(index);
 
