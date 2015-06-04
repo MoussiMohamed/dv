@@ -67,8 +67,8 @@
 <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <!--import jquery js for register and login form-->
-    <script type="application/javascript" src="js/home.js"></script>
-    <script type="application/javascript" src="js/editUser.js"></script>
+    <script type="application/javascript" src="js/listProduct.js"></script>
+    <script type="application/javascript" src="js/editProduct.js"></script>
     </head>
 
 <body>
@@ -78,8 +78,8 @@
 		
         
         <div class="col-md-12">
-        <h4>Liste des utilisateurs</h4>
-        <a href="inscription.html">Ajouter un nouveau utilisateur</a>
+        <h4>Liste des produits</h4>
+        <a href="addProduct.html">Ajouter un nouveau produit</a>
         <div class="table-responsive">
 
       
@@ -88,13 +88,12 @@
       <table id="myTable" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <th>Id</th>
-                     <th>Nom</th>
-                     <th>Prenom</th>
-                     <th>Adresse e-mail</th>
-                     <th>Mot de passe</th>
-                     <th>Modifier</th>
-                     <th>Supprimer</th>
+              <th>Id</th>
+              <th>Nom de produit</th>
+              <th>Date d'insertion</th>
+              <th>Date de modification</th>
+              <th>Modifier</th>
+              <th>Supprimer</th>
             </tr>
         </thead>
  
@@ -138,21 +137,20 @@
     </div>
     
     
-    
     <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
       <div class="modal-dialog">
     <div class="modal-content">
           <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-        <h4 class="modal-title custom_align" id="Heading">Supprimer cet utilisateur</h4>
+        <h4 class="modal-title custom_align" id="Heading">Supprimer ce produit</h4>
       </div>
           <div class="modal-body">
        
-       <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Êtes-vous sûr de vouloir supprimer cet utilisateur?</div>
+       <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Êtes-vous sûr de vouloir supprimer ce produit?</div>
        
       </div>
         <div class="modal-footer ">
-        <button type="button" id="btnConfirmDelete" data-dismiss="modal" class="btn btn-success" onclick="Javascript:deleteRow(sessionStorage.getItem('selectedRowIndex'),sessionStorage.getItem('iduser'));"><span class="glyphicon glyphicon-ok-sign"></span> Oui</button>
+        <button type="button" id="btnConfirmDelete" data-dismiss="modal" class="btn btn-success" onclick="Javascript:deleteRow(sessionStorage.getItem('selectedRowIndex'),sessionStorage.getItem('idProduit'));"><span class="glyphicon glyphicon-ok-sign"></span> Oui</button>
         <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Non</button>
       </div>
         </div>

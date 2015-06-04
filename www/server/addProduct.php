@@ -2,24 +2,21 @@
 header('Access-Control-Allow-Origin: *');
 
    
-    if(isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['email']) && isset($_POST['password' ])){
-	$name     = $_POST["name"];
-	$surname   = $_POST["surname"];
-	$email    = $_POST["email"];
-	$password       = $_POST["password"];
+    if(isset($_POST['nameProduct']) ){
+	$nameProduct     = $_POST["nameProduct"];
 	mysql_connect("localhost", "root","") or die(mysql_error()); //Connect to server
 	mysql_select_db("db_e_adv") or die("Cannot connect to database"); //Connect to database
-	$query = mysql_query("Select * from user"); //Query the users table
+	$query = mysql_query("Select * from produit"); //Query the product table
 	
 	while($row = mysql_fetch_array($query)) //display all rows from query
 	{
-		$table_users = $row['email']; // the first username row is passed on to $table_users, and so on until the query is finished
-		if($email == $table_users) // checks if there are any matching fields
+		$table_product = $row['nom_Produit']; // the product name row is passed on to $table_product, and so on until the query is finished
+		if($nameProduct == $table_product) // checks if there are any matching fields
 		{
 			
 			
 			$data = array(
-            "response"     => "Email address has been taken!",
+            "response"     => "Product has been taken!",
             
         );
 		echo json_encode($data);
@@ -27,7 +24,7 @@ header('Access-Control-Allow-Origin: *');
 	}
 $timestamp = date('Y-m-d G:i:s');
 
-		mysql_query("INSERT INTO user (name, surname, email, password, dateInsertion) VALUES ('$name','$surname','$email','$password', '$timestamp')"); //Inserts the value to table user
+		mysql_query("INSERT INTO produit (nom_Produit, date_Insertion) VALUES ('$nameProduct', '$timestamp')"); //Inserts the value to table user
 		
 			$data = array(
             "response"     => "Successfully Registered!",
