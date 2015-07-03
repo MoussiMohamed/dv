@@ -24,12 +24,12 @@ if(isset($_POST['btn-upload']))
 	
 	if(move_uploaded_file($file_loc,$folder.$final_file))
 	{
-		$sql="INSERT INTO tbl_uploads(file,type,datafile,size) VALUES('$final_file','$file_type','fileData','$new_size')";
+		$sql="INSERT INTO tbl_uploads(file,type,size) VALUES('$final_file','$file_type','$new_size')";
 		mysql_query($sql);
 		?>
 		<script>
 		alert('successfully uploaded');
-        // window.location.href='index.php?success';
+         window.location.href='index.php?success';
         </script>
 		<?php
 	}
@@ -38,7 +38,7 @@ if(isset($_POST['btn-upload']))
 		?>
 		<script>
 		alert('error while uploading file');
-        // window.location.href='index.php?fail';
+         window.location.href='index.php?fail';
         </script>
 		<?php
 	}
