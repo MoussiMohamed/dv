@@ -46,7 +46,7 @@ function bigUpload () {
 
 		//Size of chunks to upload (in bytes)
 		//Default: 1MB
-		'chunkSize': 1000000,
+		'chunkSize': 10000000,
 
 		//Max file size allowed
 		//Default: 2GB
