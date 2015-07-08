@@ -37,6 +37,7 @@ $(document).ready(function() {
 
 
 function logOut(){
+	alert("I am here");
 	sessionStorage.clear();
 	window.location.replace("index.html");
 }

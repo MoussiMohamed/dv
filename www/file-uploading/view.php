@@ -6,6 +6,7 @@ include_once 'dbconfig.php';
 <head>
 <title>File Uploading With PHP and MySql</title>
 <link rel="stylesheet" href="style.css" type="text/css" />
+<script type= "application/javascript" src="../touchPDFJQuery/pdf.js"></script>
 </head>
 <body>
 <div id="header">
@@ -33,6 +34,7 @@ include_once 'dbconfig.php';
         <td><?php echo $row['type'] ?></td>
         <td><?php echo $row['size'] ?></td>
         <td><a href="uploads/<?php echo $row['file'] ?>" target="_blank">view file</a></td>
+        <td><button id="btnDisplayPDF" onclick="doGetPDF('<?php echo $row['file'] ?>')" >view pdf</button></td>
         </tr>
         <?php
 	}

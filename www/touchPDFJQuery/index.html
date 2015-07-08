@@ -31,7 +31,7 @@
 		
 	</style>
 	
-  
+  <script type="text/javascript" src="pdf.js"></script>
 
 </head>
 <!-- onload="getPageNumber();" -->
@@ -40,8 +40,9 @@
 <div id="myPDF" style="height: 100%; width: 100%; margin: auto;"></div>
 
 <div id="warning-message">this website is only viewable in landscape mode</div>
+
 <script type="text/javascript" src="pdf.compatibility.js"></script>
-<script type="text/javascript" src="pdf.js"></script>
+
 <script type="text/javascript" src="jquery.min.js"></script>
 <script type="text/javascript" src="jquery.touchSwipe.js"></script>
 <script type="text/javascript" src="jquery.touchPDF.js"></script>
@@ -53,7 +54,8 @@
 	
 	$(function() {
 		$("#myPDF").pdf( {
-			source: "congres.pdf"
+			
+			source: "../file-uploading/uploads/"+sessionStorage.getItem("filePDF")
 		} );
 	});
 

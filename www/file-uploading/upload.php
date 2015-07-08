@@ -9,7 +9,7 @@ if(isset($_POST['btn-upload']))
 	$file_type = $_FILES['file']['type'];
 	$folder="uploads/";
 	$fileData =addslashes(file_get_contents($_FILES['file']['tmp_name']));
-	var_dump($fileData);
+	
 	$fileProperties = getimageSize($_FILES['file']['tmp_name']);
 	
 	// new file size in KB
@@ -25,11 +25,15 @@ if(isset($_POST['btn-upload']))
 	if(move_uploaded_file($file_loc,$folder.$final_file))
 	{
 		$sql="INSERT INTO tbl_uploads(file,type,size) VALUES('$final_file','$file_type','$new_size')";
+		ini_set('mysql.connect_timeout', 300);
+		ini_set('default_socket_timeout', 300);
 		mysql_query($sql);
+		
+		
 		?>
 		<script>
 		alert('successfully uploaded');
-         window.location.href='index.php?success';
+        window.location.href='index.php?success';
         </script>
 		<?php
 	}

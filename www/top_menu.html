@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<head>
+<title>top panel</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
   <link rel="stylesheet" href="bootstrap-3.3.4-dist/css/bootstrap.min.css">
   <style>
@@ -12,13 +13,12 @@
         @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
         /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
     </style>
-    <title>menu</title>
-	</head>
-<body >
-<a href="inscription.html" target="main_page">S'inscrire</a>
-<br /><br />
-<a href="listProduct.html" target="main_page">Gérer Produit</a>
-<br /><br />
-<a href="home.html" target="main_page">Gérer Utilisateur</a>
-</body>
+    <script type="application/javascript" src="js/temp.js"></script>
+</head>
+
+   <body>
+      <a href="index.html" id="topLink" style="display: block;" target="main_page">S'authentifier</a>
+      <a href="index.html" style="display: block;" target="main_page" value="Se déconnecter" onclick="logOut()" class="btn btn-warning btn-lg" style="width: 18% !important; ">Se déconnecter</a>
+   </body>
+
 </html>
