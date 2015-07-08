@@ -16,9 +16,18 @@
     <script type="application/javascript" src="js/temp.js"></script>
 </head>
 
-   <body>
-      <a href="index.html" id="topLink" style="display: block;" target="main_page">S'authentifier</a>
-      <a href="index.html" style="display: block;" target="main_page" value="Se déconnecter" onclick="logOut()" class="btn btn-warning btn-lg" style="width: 18% !important; ">Se déconnecter</a>
+   <body onload="doVerifLoggedUser()">
+      <a href="index.html" id="topLinkConnect" style="display: block;" target="main_page">S'authentifier</a>
+      <a href="index.html" id="topLinkDeconnect" style="display: none;" target="main_page" value="Se déconnecter" onclick="logOut()" class="btn btn-warning btn-lg" style="width: 18% !important; ">Se déconnecter</a>
+   <script>
+   	function doVerifLoggedUser(){
+   		
+   	if(sessionStorage.getItem("UserLogged") == null){
+   		document.getElementById("topLinkConnect").setAttribute('style', 'display: block');
+   		document.getElementById("topLinkDeconnect").setAttribute('style', 'display: none');
+   	}
+   	}
+   </script>
    </body>
 
 </html>
