@@ -24,6 +24,7 @@ include_once 'dbconfig.php';
     <td>View</td>
     </tr>
     <?php
+    $statement="where id_produit=";
 	$sql="SELECT * FROM tbl_uploads";
 	$result_set=mysql_query($sql);
 	while($row=mysql_fetch_array($result_set))

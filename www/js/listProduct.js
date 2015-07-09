@@ -1,11 +1,11 @@
 $(document).ready(function() {
 	if(sessionStorage.getItem("UserLogged") == null){
 		alert("Permission non accordée !\nVeuillez saisir vos paramètres d'accès");
-		
+	
 		window.location.replace("index.html");
 		sessionStorage.clear();
 	}else{
-
+	
 	$.ajax({    //create an ajax request to load_page.php
         type: "GET",
         url: "http://127.0.0.1:8880/e_advRes/www/server/listProduct.php",             
@@ -23,10 +23,10 @@ $(document).ready(function() {
                     response.d[i].date_Insertion,
                     response.d[i].date_Modification,
                     '<input type="button"  class="btn btn-primary btn-xs" value = "Modifier" onClick="Javascript:changeScreanToEdit(this)" >',
-                    '<input type="button" class="btn btn-danger btn-xs" value = "Supprimer" data-title="Delete" data-toggle="modal" onClick="Javascript:getIdProduit(this)" data-target="#delete" >'
+                    '<input type="button" class="btn btn-danger btn-xs" value = "Supprimer" data-title="Delete" data-toggle="modal" onClick="Javascript:getIdProduit(this)" data-target="#delete" >',
+                    '<input type="button"  class="btn btn-primary btn-xs" value = "Ajouter document" onClick="Javascript:changeScreanToAddPDF(this)" >'
                 ] ).draw();
          
-              
             }
         }
 

@@ -1,5 +1,8 @@
+
 <?php
+
 include_once 'dbconfig.php';
+$idProd=$_POST['idProd'];
 if(isset($_POST['btn-upload']))
 {    
      
@@ -24,7 +27,8 @@ if(isset($_POST['btn-upload']))
 	
 	if(move_uploaded_file($file_loc,$folder.$final_file))
 	{
-		$sql="INSERT INTO tbl_uploads(file,type,size) VALUES('$final_file','$file_type','$new_size')";
+		$sql="INSERT INTO tbl_uploads(file,type,size)
+		VALUES('$final_file','$file_type','$new_size')";
 		ini_set('mysql.connect_timeout', 300);
 		ini_set('default_socket_timeout', 300);
 		mysql_query($sql);
@@ -33,6 +37,7 @@ if(isset($_POST['btn-upload']))
 		?>
 		<script>
 		alert('successfully uploaded');
+		alert($idProd);
         window.location.href='index.php?success';
         </script>
 		<?php
