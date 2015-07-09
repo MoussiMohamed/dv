@@ -8,7 +8,7 @@ include_once 'dbconfig.php';
 <title>E-ADV File Upload</title>
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
-<body>
+<body onload="fillIdProd()">
 	
 		
 <div id="header">
@@ -16,14 +16,17 @@ include_once 'dbconfig.php';
 </div>
 <div id="body">
 	<script>
-			 var prodId=sessionStorage.getItem("id_Produit");
+			 function fillIdProd(){
+			 var prodId = sessionStorage.getItem("id_Produit");
+			 document.getElementById('idProd').value = prodId;
 			 
+			 }
 			 
 		</script>
 	<form name="forma" action="upload.php" method="post" enctype="multipart/form-data">
 	<input type="file" name="file" />
 	
-	<input type="text" style="display:block" id="idProd" name="idProd"/>
+	<input type="text" style="display:none" id="idProd" name="idProd"  />
 	<button type="submit" name="btn-upload">upload</button>
 	</form>
     <br /><br />
