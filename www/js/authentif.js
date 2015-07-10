@@ -35,6 +35,7 @@ function doAuthentif(){
     updReq = getXMLHttp();
     // Create some variables we need to send to our PHP file
     var url = "http://127.0.0.1:8880/e_advRes/www/server/authentif.php";
+    
 
     email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
@@ -53,7 +54,7 @@ if(email == "" && password == "")
                         if(updReq.responseText == "authentification reussie"){
                         	sessionStorage.setItem("UserLogged",email);
                         	
-                        window.location.replace("home.html");
+                        window.location.replace("e-adv-home-page.html");
                         }else{alert(updReq.responseText)}
                 }
         }

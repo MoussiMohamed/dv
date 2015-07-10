@@ -5,14 +5,14 @@ include_once 'dbconfig.php';
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>E-ADV File Upload</title>
+<title>E-adv Gestion de Contenu</title>
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 <body onload="fillIdProd()">
 	
 		
 <div id="header">
-<label>Upload Fichier </label>
+<label>Ajouter Document </label>
 </div>
 <div id="body">
 	<script>
@@ -24,6 +24,12 @@ include_once 'dbconfig.php';
 			 
 		</script>
 	<form name="forma" action="upload.php" method="post" enctype="multipart/form-data">
+	
+	Type : <select>
+  <option value="PDF">Presentation</option>
+  <option value="saab">Article</option>
+  	</select>
+	<br><br>
 	<input type="file" name="file" />
 	
 	<input type="text" style="display:none" id="idProd" name="idProd"  />

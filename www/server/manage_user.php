@@ -27,12 +27,16 @@ header('Access-Control-Allow-Origin: *');
 	}
 $timestamp = date('Y-m-d G:i:s');
 
-		mysql_query("INSERT INTO user (name, surname, email, password, dateInsertion) VALUES ('$name','$surname','$email','$password', '$timestamp')"); //Inserts the value to table user
-		
+
+		$result = mysql_query("INSERT INTO user (name, surname, email, password, dateInsert) VALUES ('$name','$surname','$email','$password','$timestamp')"); //Inserts the value to table user
+		if (!$result) {
+    die('Requête invalide : ' . mysql_error());
+}
 			$data = array(
             "response"     => "Successfully Registered!",
             
         );
+		
 		echo json_encode($data);
 
 }

@@ -37,7 +37,7 @@ if(isset($_POST['btn-upload']))
 		?>
 		<script>
 		alert('successfully uploaded');
-		alert($idProd);
+		
         window.location.href='index.php?success';
         </script>
 		<?php

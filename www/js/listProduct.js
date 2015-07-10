@@ -24,7 +24,8 @@ $(document).ready(function() {
                     response.d[i].date_Modification,
                     '<input type="button"  class="btn btn-primary btn-xs" value = "Modifier" onClick="Javascript:changeScreanToEdit(this)" >',
                     '<input type="button" class="btn btn-danger btn-xs" value = "Supprimer" data-title="Delete" data-toggle="modal" onClick="Javascript:getIdProduit(this)" data-target="#delete" >',
-                    '<input type="button"  class="btn btn-primary btn-xs" value = "Ajouter document" onClick="Javascript:changeScreanToAddPDF(this)" >'
+                    '<input type="button"  class="btn btn-primary btn-xs" value = "Ajouter contenu" onClick="Javascript:changeScreanToAddPDF(this)" >',
+                    '<input type="button"  class="form-control btn btn-login" value = "Afficher contenu" onClick="Javascript:changeScreanToViewPDF(this)" >'
                 ] ).draw();
          
             }

@@ -490,7 +490,7 @@
 			linksDisabled = false;
 			$drag.panzoom("option", "disablePan", true);
 			state = LOADED;
-			alert(pageNum);
+			//alert(pageNum);
 		}
 
 		/**

@@ -79,8 +79,8 @@
 
 .touchPDF > .pdf-outerdiv > .pdf-viewer > .pdf-drag  canvas {
     visibility: hidden;
-    width: 1300px;
-    height: 800px;
+    width: 800px;
+    height: 500px;
 }
 
 .touchPDF > .pdf-outerdiv > .pdf-viewer > .pdf-drag  .pdf-annotations {
