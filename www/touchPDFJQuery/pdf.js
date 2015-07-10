@@ -1,7 +1,7 @@
 function doGetPDF(file){
 	sessionStorage.setItem("filePDF",file);
 
-	window.location.replace("../touchPDFJQuery/index.html");
+	window.location.replace("../touchPDFJQuery/index.html","_blank");
 	
 }
 
