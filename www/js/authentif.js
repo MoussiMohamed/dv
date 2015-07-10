@@ -34,7 +34,8 @@ function doAuthentif(){
 	 // Create our XMLHttpRequest object
     updReq = getXMLHttp();
     // Create some variables we need to send to our PHP file
-    var url = "http://127.0.0.1:8880/e_advRes/www/server/authentif.php";
+    var url = "http://127.0.0.1:8881/dv/www/server/authentif.php";
+    
 
     email = document.getElementById("email").value;
     var password = document.getElementById("password").value;

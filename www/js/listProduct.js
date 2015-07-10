@@ -1,14 +1,14 @@
 $(document).ready(function() {
 	if(sessionStorage.getItem("UserLogged") == null){
 		alert("Permission non accordée !\nVeuillez saisir vos paramètres d'accès");
-		
+	
 		window.location.replace("index.html");
 		sessionStorage.clear();
 	}else{
-
+	
 	$.ajax({    //create an ajax request to load_page.php
         type: "GET",
-        url: "http://127.0.0.1:8880/e_advRes/www/server/listProduct.php",             
+        url: "http://127.0.0.1:8881/dv/www/server/listProduct.php",             
         dataType: "json",   //expect json to be returned                
         success: function(response){                    
           
@@ -23,10 +23,11 @@ $(document).ready(function() {
                     response.d[i].date_Insertion,
                     response.d[i].date_Modification,
                     '<input type="button"  class="btn btn-primary btn-xs" value = "Modifier" onClick="Javascript:changeScreanToEdit(this)" >',
-                    '<input type="button" class="btn btn-danger btn-xs" value = "Supprimer" data-title="Delete" data-toggle="modal" onClick="Javascript:getIdProduit(this)" data-target="#delete" >'
+                    '<input type="button" class="btn btn-danger btn-xs" value = "Supprimer" data-title="Delete" data-toggle="modal" onClick="Javascript:getIdProduit(this)" data-target="#delete" >',
+                    '<input type="button"  class="btn btn-primary btn-xs" value = "Ajouter contenu" onClick="Javascript:changeScreanToAddPDF(this)" >',
+                    '<input type="button"  class="btn btn-primary btn-xs" value = "Afficher contenu" onClick="Javascript:changeScreanToViewPDF(this)" >'
                 ] ).draw();
          
-              
             }
         }
 
@@ -37,6 +38,7 @@ $(document).ready(function() {
 
 
 function logOut(){
+	alert("I am here");
 	sessionStorage.clear();
 	window.location.replace("index.html");
 }
@@ -101,7 +103,7 @@ function deleteRow(selectedRow,idProduit) {
 
 updReq = getXMLHttp();
     // Create some variables we need to send to our PHP file
-    var url = "http://127.0.0.1:8880/e_advRes/www/server/deleteProduct.php";
+    var url = "http://127.0.0.1:8881/dv/www/server/deleteProduct.php";
     
 	updReq.open('POST', url, true);
         updReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -135,7 +137,7 @@ function editUser(obj) {
 
 updReq = getXMLHttp();
     // Create some variables we need to send to our PHP file
-    var url = "http://127.0.0.1:8880/e_advRes/www/server/editUser.php";
+    var url = "http://127.0.0.1:8881/dv/www/server/editUser.php";
     
     
 	updReq.open('POST', url, true);

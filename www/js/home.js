@@ -8,7 +8,7 @@ $(document).ready(function() {
 
 	$.ajax({    //create an ajax request to load_page.php
         type: "GET",
-        url: "http://127.0.0.1:8880/e_advRes/www/server/AfficheUser.php",             
+        url: "http://127.0.0.1:8881/dv/www/server/AfficheUser.php",             
         dataType: "json",   //expect json to be returned                
         success: function(response){                    
           
@@ -102,7 +102,7 @@ function deleteRow(selectedRow,idUsr) {
 
 updReq = getXMLHttp();
     // Create some variables we need to send to our PHP file
-    var url = "http://127.0.0.1:8880/e_advRes/www/server/deleteUser.php";
+    var url = "http://127.0.0.1:8881/dv/www/server/deleteUser.php";
     
 	updReq.open('POST', url, true);
         updReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -135,7 +135,7 @@ function editUser(obj) {
 
 updReq = getXMLHttp();
     // Create some variables we need to send to our PHP file
-    var url = "http://127.0.0.1:8880/e_advRes/www/server/editUser.php";
+    var url = "http://127.0.0.1:8881/dv/www/server/editUser.php";
     
     
 	updReq.open('POST', url, true);

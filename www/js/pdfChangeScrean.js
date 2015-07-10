@@ -1,5 +1,23 @@
-function getXMLHttp()
-{
+function changeScreanToAddPDF(id_Produit){
+	var table = document.getElementById("myTable");
+            var rowCount = table.rows.length;
+            
+    		var row = table.insertRow(rowCount);
+    
+    var index = id_Produit.parentNode.parentNode.rowIndex;
+	var elemtIdProduit = table.rows[index].cells[0].innerHTML;
+	var elemtNameProduit = table.rows[index].cells[1].innerHTML;
+	
+	// Store
+sessionStorage.setItem("id_Produit", elemtIdProduit);
+sessionStorage.setItem("nomProduit", elemtNameProduit);
+
+
+	window.location.replace("file-uploading/index.php");
+}
+
+	function getXMLHttp()
+	{
   var xmlHttp
 
   try
@@ -30,7 +48,7 @@ function getXMLHttp()
   return xmlHttp;
 }
 
-function changeScreanToEdit(id_Produit){
+function changeScreanToViewPDF(id_Produit){
 	var table = document.getElementById("myTable");
             var rowCount = table.rows.length;
             
@@ -45,42 +63,31 @@ sessionStorage.setItem("id_Produit", elemtIdProduit);
 sessionStorage.setItem("nomProduit", elemtNameProduit);
 
 
-	window.location.replace("editProduct.html");
-}
-function doEditProduct(){
 	 // Create our XMLHttpRequest object
     updReq = getXMLHttp();
     // Create some variables we need to send to our PHP file
-    var url = "http://127.0.0.1:8881/dv/www/server/editProduct.php";
-    var id_Prod = sessionStorage.getItem("id_Produit");
-    var nameProduct = document.getElementById("nameProduct").value;
-    var vars = "id_Product="+id_Prod+"&nameProduct="+nameProduct;
+    var url = "http://127.0.0.1:8881/dv/www/file-uploading/view.php";
     
+
+    
+    var idProd = sessionStorage.getItem("id_Produit");
+
+
+    var vars = "idProd="+idProd;
 	updReq.open('POST', url, true);
         updReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
        
         updReq.onreadystatechange = function() {//Call a function when the state changes.
                 if(updReq.readyState == 4 && updReq.status == 200) {
-                	//HandleResponseEdit(updReq.responseText);
-                        
-                        window.location.replace("listProduct.html");
+                        	
+                        	window.location.replace("file-uploading/view.php");
+                        	
                 }
         }
         updReq.send(vars);
+       
+       
+
+
 
 }
-
-function doGetDataForEdit(){
-	 document.getElementById("id_Produit").innerHTML = sessionStorage.getItem("id_Produit");
-    document.getElementById("nameProduct").value = sessionStorage.getItem("nomProduit"); 
-    
-}
-
-// HandleResponse
-function HandleResponseEdit(response)
-{
-  document.getElementById('ResponseDiv').innerHTML = response;
-}
-
-
-
