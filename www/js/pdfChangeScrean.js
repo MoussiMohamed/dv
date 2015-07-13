@@ -12,8 +12,35 @@ function changeScreanToAddPDF(id_Produit){
 sessionStorage.setItem("id_Produit", elemtIdProduit);
 sessionStorage.setItem("nomProduit", elemtNameProduit);
 
+ // Create our XMLHttpRequest object
+    updReq = getXMLHttp();
+    // Create some variables we need to send to our PHP file
+    var url = "http://127.0.0.1:8880/e_advRes/www/file-uploading/view.php";
+    
 
-	window.location.replace("file-uploading/index.php");
+    
+    var idProd = sessionStorage.getItem("id_Produit");
+
+
+    var vars = "idProduit="+idProd;
+	updReq.open('POST', url, true);
+	
+        updReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+       
+        updReq.onreadystatechange = function() {//Call a function when the state changes.
+                if(updReq.readyState == 4 && updReq.status == 200) {
+                     
+                   window.location.replace("file-uploading/index.php");	
+                
+                }
+                
+        }
+        updReq.send(vars);
+       
+      
+
+
+	
 }
 
 	function getXMLHttp()

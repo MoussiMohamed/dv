@@ -6,11 +6,6 @@ if(isset($_POST['idProduit'])){
 $_SESSION['idP']=$_POST['idProduit'];
 }
 
-// if (isset($_POST['idProduit'])) {
-    // $idProd = $_POST['idProduit'];
-	// echo $idProd;
-// }
-
 
 ?>
 <!DOCTYPE html>
@@ -27,16 +22,19 @@ $_SESSION['idP']=$_POST['idProduit'];
 <div id="body">
 	<table width="80%" border="1">
     <tr>
-    <th colspan="4">Vos fichiers...<label><a href="index.php">uploader un nouveau fichier...</a></label></th>
+    <th colspan="6">Vos fichiers...<label><a href="index.php">uploader un nouveau fichier...</a></label></th>
     </tr>
     <tr>
-    <td>File Name</td>
-    <td>File Type</td>
-    <td>File Size(KB)</td>
-    <td>View</td>
+    <td>ID</td>
+    <td>Nom</td>
+    <td>Type</td>
+    <td>Taille (KB)</td>
+    <td>Afficher</td>
+    <td>Supprimer</td>
     </tr>
     <?php
     $varID=$_SESSION['idP'];
+	
 	$sql="SELECT * FROM tbl_uploads where id_produit='$varID'";
 	
 	$result_set=mysql_query($sql);
@@ -44,11 +42,12 @@ $_SESSION['idP']=$_POST['idProduit'];
 	{
 		?>
         <tr>
+        <td><?php echo $row['id_file'] ?></td>
         <td><?php echo $row['file'] ?></td>
         <td><?php echo $row['type'] ?></td>
-        <td><?php echo $row['size'] ?></td>
-      <!--  <td><a href="uploads/<?php echo $row['file'] ?>" target="_blank">view file</a></td>-->
-        <td><button id="btnDisplayPDF" onclick="doGetPDF('<?php echo $row['file'] ?>')" >view pdf</button></td>
+        <td><?php echo $row['size'] ?></td>       
+        <td><button id="btnDisplayPDF" onclick="doGetPDF('<?php echo $row['file'] ?>')" >Afficher PDF</button></td>
+		<td><button id="btnDeletePDF" onclick="doDeletePDF('<?php echo $row['id_file'] ?>','<?php echo $row['file'] ?>')" >Supprimer PDF</button></td>
         </tr>
         <?php
 	}
