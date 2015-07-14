@@ -111,17 +111,13 @@ updReq = getXMLHttp();
        
         updReq.onreadystatechange = function() {//Call a function when the state changes.
                 if(updReq.readyState == 4 && updReq.status == 200) {
-//HandleResponseDelete(updReq.responseText);
+//alert(updReq.responseText);
 
 table.deleteRow(selectedRow);
-
-
    
     }
         }
         updReq.send(vars);
-    
-    
     
 }
 
