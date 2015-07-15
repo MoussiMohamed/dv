@@ -6,7 +6,7 @@ mysql_connect("localhost", "root", "") or die(mysql_error());
 //Connect to server
 mysql_select_db("db_e_adv") or die("Cannot connect to database");
 //Connect to database
-$query = "select * from produit order by date_Insertion DESC";
+$query = "select * from produit";
 $reqExec = mysql_query($query);
 
 $produit;

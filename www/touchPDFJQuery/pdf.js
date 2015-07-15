@@ -1,5 +1,16 @@
 function doGetPDF(file){
-	sessionStorage.setItem("filePDF",file);
+	var table = document.getElementById("myTable");
+            var rowCount = table.rows.length;
+            
+    		var row = table.insertRow(rowCount);
+    
+    var index = file.parentNode.parentNode.rowIndex;
+	
+	var elemtNameFile = table.rows[index].cells[1].innerHTML;
+	
+	// Store
+sessionStorage.setItem("filePDF", elemtNameFile);
+
 
 	window.location.replace("../touchPDFJQuery/index.html","_blank");
 	
@@ -35,10 +46,29 @@ function getXMLHttp()
   }
   return xmlHttp;
 }
-function doDeletePDF(fileId,fileName){
+function doDeletePDF(file){
 	// Create our XMLHttpRequest object
+	var table = document.getElementById("myTable");
+            var rowCount = table.rows.length;
+            
+    		var row = table.insertRow(rowCount);
+    
+    var index = file.parentNode.parentNode.rowIndex;
+	var elemtIdFile = table.rows[index].cells[0].innerHTML;
+	var elemtNameFile = table.rows[index].cells[1].innerHTML;
 	
-    updReq = getXMLHttp();
+	sessionStorage.setItem("SelectedRow",index);
+	sessionStorage.setItem("elemtIdFiche",elemtIdFile);
+	sessionStorage.setItem("elemtNameFile",elemtNameFile);
+	
+    
+}
+function doDeletePDFConfirm(selectedRow,fileId,fileName){
+	
+	var table = document.getElementById("myTable");
+            var rowCount = table.rows.length;
+        
+	updReq = getXMLHttp();
     // Create some variables we need to send to our PHP file
     var url = "http://127.0.0.1:8880/e_advRes/www/file-uploading/delete.php";
 
@@ -49,12 +79,14 @@ function doDeletePDF(fileId,fileName){
        
         updReq.onreadystatechange = function() {//Call a function when the state changes.
                 if(updReq.readyState == 4 && updReq.status == 200) {
-                     
-                    alert(updReq.responseText);
-                
+                    
+                    if(updReq.responseText == "Fichier a été supprimé avec succès"){
+                    
+                    table.deleteRow(selectedRow);
                 }
-                
+            }
         }
+        
         updReq.send(vars);
 }
 

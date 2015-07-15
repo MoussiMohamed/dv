@@ -12,7 +12,7 @@ include_once 'dbconfig.php';
 	
 		
 <div id="header">
-<label>Ajouter Document </label>
+<label>Ajouter contenu </label>
 </div>
 <div id="body">
 	<script>
@@ -40,7 +40,7 @@ include_once 'dbconfig.php';
 	if(isset($_GET['success']))
 	{
 		?>
-        <label>File Uploaded Successfully...  <a href="view.php">Veuillez cliquer ici pour voir les fichiers</a></label>
+        <label>File Uploaded Successfully...  <a href="view.html">Veuillez cliquer ici pour voir les fichiers</a></label>
         <?php
 	}
 	else if(isset($_GET['fail']))
