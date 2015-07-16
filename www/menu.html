@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
- <link rel="stylesheet" href="bootstrap-3.3.4-dist/css/bootstrap.min.css">
+ 
   <style>
     /* following three (cascaded) are equivalent to above three meta viewport statements */
     /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html */
@@ -14,14 +14,91 @@
     </style>
     <title>menu</title>
 	</head>
-<body bgcolor="#f0f0f0">
-	<br>
-<b>
-<a  class="btn btn-primary btn-lg btn-block" href="home.html" target="main_page">Gérer Utilisateur</a></b>
-<br />
-<b><a href="listProduct.html"  class="btn btn-primary btn-lg btn-block" target="main_page">Gérer Produit</a></b>
-<br>
-<b><a href="listProduct.html"  class="btn btn-primary btn-lg btn-block" target="main_page">Gérer Contenu</a></b>
+<body bgcolor="#f5f5f5">
+	<style>
+		 p, ul, li, div, nav
+        {
+
+            padding:0;
+            margin:0;
+        }
+
+
+        body
+        {
+            font-family:Calibri;
+        }
+
+
+        #menu {
+            overflow: auto;
+            position:relative;
+            z-index:2;
+            margin:-8px;
+        }
+
+
+        .parent-menu {
+            background-color: #0c8fff;
+            /*min-width:15%;
+            max-width:85%;
+            */
+           width:100%;
+           float:left;
+        }
+
+
+        #menu ul
+        {
+            list-style-type:none;
+        }
+
+
+        #menu ul li a
+        {
+
+            padding:10px 15px;
+            display:block;
+            color:#fff;
+            text-decoration:none;
+            font-weight: bold;
+            
+        }
+
+
+            #menu ul li a:hover
+            {
+                background-color:#007ee9;
+            }
+
+
+	</style>
+
+<nav id="menu">
+
+        <ul class="parent-menu">
+
+            <li><a href="home.html" target="main_page">Comptes</a>
+
+                
+
+            </li>
+
+            <li><a href="listProduct.html" target="main_page">Produits</a>
+
+                </li>
+
+            <li><a href="listProduct.html" target="main_page">Contenu</a>
+
+              </li>
+
+            
+
+            
+
+        </ul>
+
+    </nav>
 
 </body>
 </html>
