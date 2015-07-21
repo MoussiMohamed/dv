@@ -25,9 +25,10 @@ include_once 'dbconfig.php';
 		</script>
 	<form name="forma" action="upload.php" method="post" enctype="multipart/form-data">
 	
-	Type : <select>
-  <option value="PDF">Presentation</option>
-  <option value="saab">Article</option>
+	Type : <select name="contentType">
+	<option value="vide">__________</option>
+  	<option value="Presentation">Presentation</option>
+  	<option value="Article">Article</option>
   	</select>
 	<br><br>
 	<input type="file" name="file" />

@@ -122,7 +122,7 @@ function getFiles() {
                 t.row.add( [
                     response.d[i].id_file,
                     response.d[i].file,
-                    response.d[i].type,
+                    response.d[i].content_type,
                     response.d[i].size,
                     '<input type="button"  class="btn btn-primary btn-xs" value = "Afficher" onClick="Javascript:doGetPDF(this)" >',
                     '<input type="button" class="btn btn-danger btn-xs" value = "Supprimer" data-title="Delete" data-toggle="modal" onClick="Javascript:doDeletePDF(this)" data-target="#delete" >'

@@ -3,13 +3,15 @@
 
 include_once 'dbconfig.php';
 
-if(isset($_POST['btn-upload']))
+if(isset($_POST['btn-upload']) && isset($_POST['contentType']) && isset($_FILES['file']['name']))
 {    
     $idProd = $_POST['idProd'];
+	$content_type = $_POST['contentType'];
 	$file = rand(1000,100000)."-".$_FILES['file']['name'];
     $file_loc = $_FILES['file']['tmp_name'];
 	$file_size = $_FILES['file']['size'];
 	$file_type = $_FILES['file']['type'];
+	
 	$folder="uploads/";
 	$fileData =addslashes(file_get_contents($_FILES['file']['tmp_name']));
 	
@@ -24,20 +26,27 @@ if(isset($_POST['btn-upload']))
 	// make file name in lower case
 	
 	$final_file=str_replace(' ','-',$new_file_name);
-	
+	if($content_type == "vide"){
+			?>
+		<script>
+		alert('Veuillez selectionner un type de contenu');
+		
+        window.location.href='index.php?fail';
+        </script>
+        <?php
+		
+	}else
+	{
 	if(move_uploaded_file($file_loc,$folder.$final_file))
 	{
-		$sql="INSERT INTO tbl_uploads(file,type,size,id_produit)
-		VALUES('$final_file','$file_type','$new_size','$idProd')";
-		ini_set('mysql.connect_timeout', 300);
-		ini_set('default_socket_timeout', 300);
+		$sql="INSERT INTO tbl_uploads(file,type,size,content_type,id_produit)
+		VALUES('$final_file','$file_type','$new_size','$content_type','$idProd')";
 		mysql_query($sql);
 		
 		
 		?>
 		<script>
-		alert('successfully uploaded');
-		
+				
         window.location.href='index.php?success';
         </script>
 		<?php
@@ -51,5 +60,15 @@ if(isset($_POST['btn-upload']))
         </script>
 		<?php
 	}
+	}
+}
+else{
+	?>
+		<script>
+		alert('Veuillez selectionner un fichier');
+		
+        window.location.href='index.php?fail';
+        </script>
+        <?php
 }
 ?>
