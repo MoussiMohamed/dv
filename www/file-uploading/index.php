@@ -5,6 +5,7 @@ include_once 'dbconfig.php';
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <title>E-adv Gestion de Contenu</title>
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -41,7 +42,7 @@ include_once 'dbconfig.php';
 	if(isset($_GET['success']))
 	{
 		?>
-        <label>File Uploaded Successfully...  <a href="view.html">Veuillez cliquer ici pour voir les fichiers</a></label>
+        <label>Téléchargement avec succès...  <a href="view.html">Veuillez cliquer ici pour voir les fichiers</a></label>
         <?php
 	}
 	else if(isset($_GET['fail']))

@@ -14,7 +14,7 @@ $("document").ready(function(){
       data: data,
       success: function(data) {
       	var d = $.parseJSON(JSON.stringify(data)).response;
-      	alert(d);
+      	
 
 				if (d == "Successfully Registered!") {
 

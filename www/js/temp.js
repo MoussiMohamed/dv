@@ -1,5 +1,6 @@
 function logOut(){
 	
 	sessionStorage.clear();
+	
 
 }

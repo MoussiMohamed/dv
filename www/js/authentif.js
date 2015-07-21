@@ -53,9 +53,14 @@ if(email == "" && password == "")
                        // HandleResponse(updReq.responseText);
                         if(updReq.responseText == "authentification reussie"){
                         	sessionStorage.setItem("UserLogged",email);
-                        	
-                        window.location.replace("e-adv-home-page.html");
-                        }else{alert(updReq.responseText)}
+                        
+                        window.location.replace("temp.html");
+                        
+                        }
+                        else
+                        {
+                        	alert(updReq.responseText);
+                        }
                 }
         }
         updReq.send(vars);

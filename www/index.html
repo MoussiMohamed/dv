@@ -33,7 +33,7 @@
 		</style>
 
 		<!--    <link rel      = "stylesheet" href="css/app.css">-->
-		<link rel              = "stylesheet" href="bootstrap-3.3.4-dist/css/bootstrap.min.css">
+		<link rel              = "stylesheet" href="bootstrap-3.3.4-dist/css/Copy_of_bootstrap.css">
 		<link rel              = "stylesheet" href="css/manage_user.css">
 
 		<!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
@@ -65,14 +65,25 @@
 
 	</head>
 
-	<body bgcolor="#3da6d6">
-
+	<body >
+<style>
+	#footer
+{
+	text-align:center;
+	position:absolute;
+	left:0;
+	right:0;
+	margin:0 auto;
+	bottom:1%;
+}
+</style>
 		<!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
 		<!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work above -->
 		<!-- <script src       = "http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
 
 		<div class             = "container">
 			<div class            = "row">
+				<div><h2 style="color: white"><center>E-ADV BackOffice</center></h2></div>
 				<div class           = "col-md-6 col-md-offset-3">
 					<div class          = "panel panel-login">
 						<div class         = "panel-heading">
@@ -81,9 +92,7 @@
 								<div class       = "col-xs-6">
 									<a href         = "" class="active" id="register-form-link">S'authentifier</a>
 								</div>
-								<div class       = "col-xs-6">
-									<a href         = "inscription.html" class="" id="register-form-link">S'inscrire</a>
-								</div>
+								
 							</div>
 							<hr>
 						</div>
@@ -114,7 +123,15 @@
 						</div>
 					</div>
 				</div>
+				<div><img src="img/logo-e-adv.png" style='left: -5%;
+    position: relative;
+    top: -60px;
+    width: 30%;'"/></div>
+    
+    <div id="footer">
+    <label style="color: white;">By <a style="color: white;" href="http://www.interactions.tn" target="_top">Interactions</a></label>
 			</div>
+	</div>		
 		</div>
 
 		<!-- <div id                = "ResponseAuth">
