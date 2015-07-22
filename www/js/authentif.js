@@ -57,8 +57,13 @@ if(email == "" && password == "")
                         window.location.replace("temp.html");
                         
                         }
-                        else
+                        else if(updReq.responseText == "Utilisateur non autorisé")
                         {
+                        	sessionStorage.setItem("UserAuthorized","Utilisateur non autorisé !");
+                        	alert(updReq.responseText);
+                        	window.open("index.html","_top");
+                        }
+                        else{
                         	alert(updReq.responseText);
                         }
                 }

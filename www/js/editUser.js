@@ -78,6 +78,13 @@ function doEditUser(){
 }
 
 function doGetDataForEdit(){
+	if(sessionStorage.getItem("UserLogged") == null
+	|| sessionStorage.getItem("UserAuthorized") == "Utilisateur non autorisé !"){
+		alert("Permission non accordée !\nVeuillez saisir vos paramètres d'accès");
+		window.open("index.html","_top");
+		//window.location.replace("index.html","_top");
+		sessionStorage.clear();
+	}
 	 document.getElementById("id_user").innerHTML = sessionStorage.getItem("id_User");
     document.getElementById("name").value = sessionStorage.getItem("name");
     document.getElementById("surname").value = sessionStorage.getItem("surname");

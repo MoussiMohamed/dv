@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Template E-ADV</title>
+<script type           = "application/javascript" src="js/authorization.js"></script>
 </head>
 <frameset rows="9%, *" >
 <frame src="top_menu.html" name="top_page" />
@@ -14,7 +15,7 @@
 </frameset>
 
    <noframes>
-   <body>
+   <body onload="getAuthorization()">
       Your browser does not support frames.
    </body>
    </noframes>

@@ -1,4 +1,10 @@
 $("document").ready(function(){
+	if(sessionStorage.getItem("UserLogged") == null){
+		alert("Permission non accordée !\nVeuillez saisir vos paramètres d'accès");
+		
+		window.location.replace("index.html");
+		sessionStorage.clear();
+	}else{
   $("#register-form").submit(function(){
     var data = {
       "name": $("#name").val(),
@@ -28,6 +34,7 @@ $("document").ready(function(){
     });
     return false;
   });
+ }
 });
 
 

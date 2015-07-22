@@ -3,13 +3,27 @@
 
 include_once 'dbconfig.php';
 
-if(isset($_POST['btn-upload']) && isset($_POST['contentType']) && isset($_FILES['file']['name']))
+if(isset($_POST['btn-upload']) && isset($_POST['contentType']) )
 {    
     $idProd = $_POST['idProd'];
 	$content_type = $_POST['contentType'];
 	$file = rand(1000,100000)."-".$_FILES['file']['name'];
-    $file_loc = $_FILES['file']['tmp_name'];
 	$file_size = $_FILES['file']['size'];
+	
+	if($file_size == null){
+		
+		?>
+		<script>
+		alert('Veuillez selectionner un fichier');
+		
+        window.location.href='index.php?fail';
+        </script>
+        <?php
+	}
+	else
+	{
+    $file_loc = $_FILES['file']['tmp_name'];
+	
 	$file_type = $_FILES['file']['type'];
 	
 	$folder="uploads/";
@@ -62,13 +76,6 @@ if(isset($_POST['btn-upload']) && isset($_POST['contentType']) && isset($_FILES[
 	}
 	}
 }
-else{
-	?>
-		<script>
-		alert('Veuillez selectionner un fichier');
-		
-        window.location.href='index.php?fail';
-        </script>
-        <?php
+
 }
 ?>

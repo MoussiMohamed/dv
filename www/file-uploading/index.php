@@ -42,7 +42,7 @@ include_once 'dbconfig.php';
 	if(isset($_GET['success']))
 	{
 		?>
-        <label>Téléchargement avec succès...  <a href="view.html">Veuillez cliquer ici pour voir les fichiers</a></label>
+        <label style="color: green;">Téléchargement avec succès...  <a href="view.html">Veuillez cliquer ici pour voir les fichiers</a></label>
         <?php
 	}
 	else if(isset($_GET['fail']))
