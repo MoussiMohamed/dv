@@ -1,4 +1,4 @@
-function getXMLHttp()
+﻿function getXMLHttp()
 {
   var xmlHttp
 
@@ -31,40 +31,55 @@ function getXMLHttp()
 }
 var email="";
 function doAuthentif(){
-	 // Create our XMLHttpRequest object
+   // Create our XMLHttpRequest object
     updReq = getXMLHttp();
     // Create some variables we need to send to our PHP file
-    var url = "http://127.0.0.1:8880/e_advRes/www/server/authentif.php";
+    var url = "../E-adv/server/authentif.php";
     
 
     email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
 if(email == "" && password == "")
 {
-	alert("Veuillez entrer vous paramètres d'accès")
-	}
-	else{
+  alert("Veuillez entrer vous paramètres d'accès")
+  }
+  else{
     var vars = "email="+email+"&password="+password;
-	updReq.open('POST', url, true);
+  updReq.open('POST', url, true);
         updReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
        
         updReq.onreadystatechange = function() {//Call a function when the state changes.
                 if(updReq.readyState == 4 && updReq.status == 200) {
                        // HandleResponse(updReq.responseText);
-                        if(updReq.responseText == "authentification reussie"){
-                        	sessionStorage.setItem("UserLogged",email);
-                        
-                        window.location.replace("temp.html");
+
+                        if(updReq.responseText == "Administrateur"){
+                          sessionStorage.setItem("UserLogged",email);
+                          sessionStorage.setItem("roleLogged","Administrateur");
+                          window.location.replace("temp.html");
                         
                         }
-                        else if(updReq.responseText == "Utilisateur non autorisé")
+                        else if (updReq.responseText == "Responsable Marketing")
                         {
-                        	sessionStorage.setItem("UserAuthorized","Utilisateur non autorisé !");
-                        	alert(updReq.responseText);
-                        	window.open("index.html","_top");
+                          sessionStorage.setItem("UserLogged",email);
+                          sessionStorage.setItem("roleLogged","Responsable Marketing");
+
+                          window.location.replace("temp.html");
+                        }
+                        else if(updReq.responseText == "Chef de produit")
+                        {
+                          sessionStorage.setItem("UserLogged",email);
+                          sessionStorage.setItem("roleLogged","Chef de produit");
+
+                          window.location.replace("temp.html");
+                        }
+                        else if(updReq.responseText == "Incorrect Email Address and/or Password!")
+                        {
+                          sessionStorage.setItem("UserLogged",email);
+                          alert("Incorrect Email Address and/or Password!");
+                          window.location.replace("index.html");
                         }
                         else{
-                        	alert(updReq.responseText);
+                          alert("Utilisateur non autorisé");
                         }
                 }
         }

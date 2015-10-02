@@ -1,4 +1,4 @@
-$(document).ready(function() {
+﻿$(document).ready(function() {
 	if(sessionStorage.getItem("UserLogged") == null
 	|| sessionStorage.getItem("UserAuthorized") == "Utilisateur non autorisé !"){
 		alert("Permission non accordée !\nVeuillez saisir vos paramètres d'accès");
@@ -9,21 +9,25 @@ $(document).ready(function() {
 
 	$.ajax({    //create an ajax request to load_page.php
         type: "GET",
-        url: "http://127.0.0.1:8880/e_advRes/www/server/AfficheUser.php",             
+        url: "../E-adv/server/AfficheUser.php",             
         dataType: "json",   //expect json to be returned                
         success: function(response){                    
-          
+
             var t = $('#myTable').DataTable();
             
             
             for (var i = 0; i < response.d.length-1; i++) { 
             	
                 t.row.add( [
-                    response.d[i].id_user,
+		    response.d[i].id_user,			
                     response.d[i].name,
                     response.d[i].surname,
+		    response.d[i].tel,
+		    response.d[i].fax,
+		    response.d[i].adresse,
                     response.d[i].email,
                     response.d[i].password,
+		    response.d[i].role_name,
                     '<input type="button"  class="btn btn-primary btn-xs" value = "Modifier" onClick="Javascript:changeScreanToEdit(this)" >',
                     '<input type="button" class="btn btn-danger btn-xs" value = "Supprimer" data-title="Delete" data-toggle="modal" onClick="Javascript:getIdUser(this)" data-target="#delete" >'
                 ] ).draw();
@@ -103,7 +107,7 @@ function deleteRow(selectedRow,idUsr) {
 
 updReq = getXMLHttp();
     // Create some variables we need to send to our PHP file
-    var url = "http://127.0.0.1:8880/e_advRes/www/server/deleteUser.php";
+    var url = "../E-adv/server/deleteUser.php";
     
 	updReq.open('POST', url, true);
         updReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -136,7 +140,7 @@ function editUser(obj) {
 
 updReq = getXMLHttp();
     // Create some variables we need to send to our PHP file
-    var url = "http://127.0.0.1:8880/e_advRes/www/server/editUser.php";
+    var url = "../E-adv/server/editUser.php";
     
     
 	updReq.open('POST', url, true);

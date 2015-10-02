@@ -1,4 +1,4 @@
-function changeScreanToAddPDF(id_Produit){
+﻿function changeScreanToAddPDF(id_Produit){
 	var table = document.getElementById("myTable");
             var rowCount = table.rows.length;
             
@@ -15,7 +15,7 @@ sessionStorage.setItem("nomProduit", elemtNameProduit);
  // Create our XMLHttpRequest object
     updReq = getXMLHttp();
     // Create some variables we need to send to our PHP file
-    var url = "http://127.0.0.1:8880/e_advRes/www/file-uploading/view.php";
+    var url = "file-uploading/view.php";
     
 
     
@@ -109,7 +109,7 @@ function getFiles() {
 	
 	$.ajax({    //create an ajax request to load_page.php
         type: "POST",
-        url: "http://127.0.0.1:8880/e_advRes/www/file-uploading/view.php",             
+        url: "view.php",             
         dataType: "json",   //expect json to be returned                
         data: data,
         success: function(response){                    

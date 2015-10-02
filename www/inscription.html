@@ -7,7 +7,6 @@
 		<title>E-ADV</title>
 		<meta http-equiv       = "Content-type" content="text/html; charset=utf-8">
 
-  
 		<!--
 		* The "meta viewport" tag (below) helps your app size appropriately to a device's ideal viewport.
 		* Note that Windows device viewports work better when initialized using the @viewport CSS rule.
@@ -31,10 +30,12 @@
 			@-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
 			@-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
 			/*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+		
 		</style>
 
 		<!--    <link rel      = "stylesheet" href="css/app.css">-->
 		<link rel              = "stylesheet" href="bootstrap-3.3.4-dist/css/bootstrap.min.css">
+		
 		<link rel              = "stylesheet" href="css/manage_user.css">
  <link rel="stylesheet" href="file-uploading/style.css" type="text/css" />
 		<!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
@@ -79,29 +80,51 @@
 						<div class         = "panel-heading">
 							<div class        = "row">
 								<div class       = "col-xs-6">
-									<a href         = "" class="active" id="register-form-link">S'inscrire</a>
-									
+									<a href         = "" class="active" id="register-form-link">Ajouter un utilisateur</a>
+
+								</div>
+								<div class       = "col-xs-6">
+                         
+                          
+								</div>
+								<div class       = "col-xs-6">
+								<label id="lblRole"></label>
 								</div>
 								
 							</div>
-							<hr>
+							
 						</div>
 						<div class         = "panel-body">
 							<div class        = "row">
 								<div class       = "col-lg-12">
-
-									<form id        = "register-form" action="" method="post" role="form" style="display: block;">
+					<form id        = "register-form" action="" method="post" role="form" style="display: block;">
+						Role: <select required="require"
+                          name="role" id="role" placeholder="Role">
+                          	<option value="" >----------</option>
+                          	<option value="Responsable Marketing">Responsable marketing</option>
+							<option value="Chef de produit">Chef de Produit</option>
+							<option value="Délegué medical">Delegué Médical</option>
+                          </select>
 										<div class     = "form-group">
-											<input type   = "text" name="name" id="name" required="require" tabindex="1" class="form-control" placeholder="Nom" value="">
+											<input type   = "text" name="name" id="name" required tabindex="1" class="form-control" placeholder="Nom" value="">
 										</div>
 										<div class     = "form-group">
-											<input type   = "text" name="surname" id="surname" required="require" tabindex="1" class="form-control" placeholder="Prenom" value="">
+											<input type   = "text" name="surname" id="surname" required tabindex="1" class="form-control" placeholder="Prenom" value="">
 										</div>
 										<div class     = "form-group">
-											<input type   = "email" name="email" id="email" required="require" tabindex="1" class="form-control" placeholder="Adresse e-mail" value="">
+											<input type   = "tel" name="tel" id="tel" required tabindex="1" class="form-control" placeholder="Tel" value="">
 										</div>
 										<div class     = "form-group">
-											<input type   = "password" name="password" id="password" required="require" tabindex="2" class="form-control" placeholder="Mot de passe">
+											<input type   = "tel" name="fax" id="fax" tabindex="1" class="form-control" placeholder="Fax" value="">
+										</div>
+										<div class     = "form-group">
+											<input type   = "text" name="adresse" id="adresse" tabindex="1" class="form-control" placeholder="Adresse" value="">
+										</div>
+										<div class     = "form-group">
+											<input type   = "email" name="email" id="email" required tabindex="1" class="form-control" placeholder="Adresse e-mail" value="">
+										</div>
+										<div class     = "form-group">
+											<input type   = "password" name="password" id="password" required tabindex="2" class="form-control" placeholder="Mot de passe">
 										</div>
 
 										<div class     = "form-group">

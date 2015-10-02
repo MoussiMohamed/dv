@@ -4,9 +4,10 @@ header('Access-Control-Allow-Origin: *');
    
     if(isset($_POST['nameProduct']) ){
 	$nameProduct     = $_POST["nameProduct"];
-	mysql_connect("localhost", "root","") or die(mysql_error()); //Connect to server
+mysql_connect("10.0.210.173", "moha","moha") or die(mysql_error()); //Connect to server
 	mysql_select_db("db_e_adv") or die("Cannot connect to database"); //Connect to database
-	$query = mysql_query("Select * from produit"); //Query the product table
+		
+$query = mysql_query("Select * from produit"); //Query the product table
 	
 	while($row = mysql_fetch_array($query)) //display all rows from query
 	{

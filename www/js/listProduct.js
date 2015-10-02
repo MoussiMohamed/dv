@@ -1,4 +1,4 @@
-$(document).ready(function() {
+﻿$(document).ready(function() {
 	if(sessionStorage.getItem("UserLogged") == null 
 	|| sessionStorage.getItem("UserAuthorized") == "Utilisateur non autorisé !"){
 		alert("Permission non accordée !\nVeuillez saisir vos paramètres d'accès");
@@ -9,15 +9,30 @@ $(document).ready(function() {
 	
 	$.ajax({    //create an ajax request to load_page.php
         type: "GET",
-        url: "http://127.0.0.1:8880/e_advRes/www/server/listProduct.php",             
+        url: "../E-adv/server/listProduct.php",             
         dataType: "json",   //expect json to be returned                
         success: function(response){                    
           
             var t = $('#myTable').DataTable();
             
+            	if(sessionStorage.getItem("roleLogged") == "Chef de produit")
+{
+	for (var i = 0; i < response.d.length-1; i++) { 
+
+                t.row.add( [
+                    response.d[i].id_Produit,
+                    response.d[i].nom_Produit,
+                    response.d[i].date_Insertion,
+                    response.d[i].date_Modification,
+		    '<input type="button"  class="btn btn-primary btn-xs" value = "Ajouter documents" onClick="Javascript:changeScreanToAddPDF(this)" >',
+                    '<input type="button"  class="form-control btn btn-login" value = "Afficher documents" onClick="Javascript:changeScreanToViewPDF(this)" >'
+                ] ).draw() ;
+         
+            }
+}else{
             
             for (var i = 0; i < response.d.length-1; i++) { 
-            	
+
                 t.row.add( [
                     response.d[i].id_Produit,
                     response.d[i].nom_Produit,
@@ -25,11 +40,12 @@ $(document).ready(function() {
                     response.d[i].date_Modification,
                     '<input type="button"  class="btn btn-primary btn-xs" value = "Modifier" onClick="Javascript:changeScreanToEdit(this)" >',
                     '<input type="button" class="btn btn-danger btn-xs" value = "Supprimer" data-title="Delete" data-toggle="modal" onClick="Javascript:getIdProduit(this)" data-target="#delete" >',
-                    '<input type="button"  class="btn btn-primary btn-xs" value = "Ajouter contenu" onClick="Javascript:changeScreanToAddPDF(this)" >',
-                    '<input type="button"  class="form-control btn btn-login" value = "Afficher contenu" onClick="Javascript:changeScreanToViewPDF(this)" >'
+                    '<input type="button"  class="btn btn-primary btn-xs" value = "Ajouter documents" onClick="Javascript:changeScreanToAddPDF(this)" >',
+                    '<input type="button"  class="form-control btn btn-login" value = "Afficher documents" onClick="Javascript:changeScreanToViewPDF(this)" >'
                 ] ).draw();
          
             }
+     }
         }
 
     });
@@ -104,7 +120,7 @@ function deleteRow(selectedRow,idProduit) {
 
 updReq = getXMLHttp();
     // Create some variables we need to send to our PHP file
-    var url = "http://127.0.0.1:8880/e_advRes/www/server/deleteProduct.php";
+    var url = "../E-adv/server/deleteProduct.php";
     
 	updReq.open('POST', url, true);
         updReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -134,7 +150,7 @@ function editUser(obj) {
 
 updReq = getXMLHttp();
     // Create some variables we need to send to our PHP file
-    var url = "http://127.0.0.1:8880/e_advRes/www/server/editUser.php";
+    var url = "../E-adv/server/editUser.php";
     
     
 	updReq.open('POST', url, true);

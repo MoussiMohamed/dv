@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 include_once 'dbconfig.php';
 ?>
@@ -8,6 +8,7 @@ include_once 'dbconfig.php';
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <title>E-adv Gestion de Contenu</title>
 <link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="../bootstrap-3.3.4-dist/css/bootstrap.min.css">
 </head>
 <body onload="fillIdProd()">
 	
@@ -28,15 +29,16 @@ include_once 'dbconfig.php';
 	
 	Type : <select name="contentType">
 	<option value="vide">__________</option>
-  	<option value="Presentation">Presentation</option>
+  	<option value="E-ADV">E-ADV</option>
   	<option value="Article">Article</option>
   	</select>
 	<br><br>
 	<input type="file" name="file" />
 	
 	<input type="text" style="display:none" id="idProd" name="idProd"  />
-	<button type="submit" name="btn-upload">upload</button>
-	</form>
+	<button type="submit" name="btn-upload" class="btn btn-success">upload</button>
+	<a href="../listProduct.html" class="btn btn-danger">Annuler</a>
+</form>
     <br /><br />
     <?php
 	if(isset($_GET['success']))

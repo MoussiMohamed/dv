@@ -1,5 +1,5 @@
-function getAuthorization(){
-	if(sessionStorage.getItem("UserLogged") == null
+﻿function getAuthorization(){
+	if(sessionStorage.getItem("roleLogged") == null
 	|| sessionStorage.getItem("UserAuthorized") == "Utilisateur non autorisé !"){
 		alert("Permission non accordée !\nVeuillez saisir vos paramètres d'accès");
 		window.open("index.html","_top");

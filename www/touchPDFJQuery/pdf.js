@@ -1,4 +1,4 @@
-function doGetPDF(file){
+﻿function doGetPDF(file){
 	var table = document.getElementById("myTable");
             var rowCount = table.rows.length;
             
@@ -70,7 +70,7 @@ function doDeletePDFConfirm(selectedRow,fileId,fileName){
         
 	updReq = getXMLHttp();
     // Create some variables we need to send to our PHP file
-    var url = "http://127.0.0.1:8880/e_advRes/www/file-uploading/delete.php";
+    var url = "../file-uploading/delete.php";
 
     var vars = "fileId="+fileId+"&fileName="+fileName;
 	updReq.open('POST', url, true);

@@ -3,7 +3,7 @@
 <head>
 <title>top panel</title>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-<META HTTP-EQUIV="refresh" CONTENT="2">
+<!-- <META HTTP-EQUIV="refresh" CONTENT="2"> -->
 <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
   
   <style>
@@ -13,22 +13,144 @@
         @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
         @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
         /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+		
+		/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  margin-top: 20px;
+}
+
+/* Flip around the padding for proper display in narrow viewports */
+.navbar-wrapper .container {
+  padding-left: 0;
+  padding-right: 0;
+}
+.navbar-wrapper .navbar {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.navbar-content
+{
+    width:320px;
+    padding: 15px;
+    padding-bottom:0px;
+}
+.navbar-content:before, .navbar-content:after
+{
+    display: table;
+    content: "";
+    line-height: 0;
+}
+.navbar-nav.navbar-right:last-child {
+margin-right: 15px !important;
+}
+.navbar-footer 
+{
+    background-color:#DDD;
+}
+.navbar-footer-content { padding:15px 15px 15px 15px; }
+.dropdown-menu {
+padding: 0px;
+overflow: hidden;
+}
     </style>
+          
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <script type="application/javascript" src="js/temp.js"></script>
 </head>
 
-   <body bgcolor="#f0f0f0" onload="doVerifLoggedUser()">
-   	<table align="center">
-   		<tr>
-      <td><a href="index.html" target="_top" id="topLinkConnect"  style=" color: red;" target="main_page" >S'authentifier</a>
-      </td><td id="separator">&nbsp; | &nbsp;</td>
-      <td><a href="inscription.html" id="topLinkInscrip" target="main_page"> S'inscrire</a>
-      </td>
-      <td id="LoggedUser">Connecté en tant que : <b><script>document.write(sessionStorage.getItem("UserLogged"))</script></b>&nbsp;&nbsp;</td>
-      <td><a href="index.html" id="topLinkDeconnect"  target="_top" value="Se déconnecter" onclick="logOut()" style=" color:red margin-left: 85%; " class="btn btn-primary" > Se déconnecter</a>
-   		</td>
-   		</tr>
-   	</table>
+   <body style="background-color:#D9EDF7" onload="doVerifLoggedUser()">
+<table  align="right">
+  <tr >
+    <td><a href="index.html" target="_top" id="topLinkConnect"  style=" color: red;" >S'authentifier</a></td>
+    <td id="separator">&nbsp; | &nbsp;</td>
+    <td><a href="inscription.html" id="topLinkInscrip" target="main_page"> S'inscrire</a></td>
+    <td id="LoggedUser" style="margin-left:50%;">Bienvenue : <b>
+        <script>document.write(sessionStorage.getItem("UserLogged"))</script>
+        </b> Vous êtes connecté en tant que : <b>
+          <script>document.write(sessionStorage.getItem("roleLogged"))</script>
+      </b>&nbsp;&nbsp;</td>
+    <td><a href="index.html" id="topLinkDeconnect"  target="_top" value="Se déconnecter" onClick="logOut()" style=" color:red margin-left: 85%; " class="btn btn-warning" >Déconnexion</a></td>
+  </tr>
+  </table>
+   <!--
+   
+   <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="navbar-wrapper">
+                <div class="container">
+                    <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+                        <div class="container">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span
+                                        class="icon-bar"></span><span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="#">Project name</a>
+                            </div>
+                            <div class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="#">Home</a></li>
+                                </ul>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Account
+                                        <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <div class="navbar-content">
+                                                    <div class="row">
+                                                        <div class="col-md-5">
+                                                            <img src="http://placehold.it/120x120"
+                                                                alt="Alternate Text" class="img-responsive" />
+                                                            <p class="text-center small">
+                                                                <a href="#">Change Photo</a></p>
+                                                        </div>
+                                                        <div class="col-md-7">
+                                                            <span><script>document.write(sessionStorage.getItem("roleLogged"))</script></span>
+                                                            <p class="text-muted small">
+                                                                <script>document.write(sessionStorage.getItem("UserLogged"))</script></p>
+                                                            <div class="divider">
+                                                            </div>
+                                                            <a href="#" class="btn btn-primary btn-sm active">View Profile</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="navbar-footer">
+                                                    <div class="navbar-footer-content">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <a href="#" class="btn btn-default btn-sm">Change Passowrd</a>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <a a href="index.html" id="topLinkDeconnect"  target="_top" value="Se déconnecter" onclick="logOut()" class="btn btn-default btn-sm pull-right">Déconnexion</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+   
+   
    <script>
    	function doVerifLoggedUser(){
    		

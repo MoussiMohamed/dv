@@ -72,27 +72,40 @@
     <script type="application/javascript" src="js/pdfChangeScrean.js"></script>
     </head>
 
-<body>
-
+<body onLoad="checkProductAccess()">
+<script>
+function checkProductAccess(){
+		if(sessionStorage.getItem("roleLogged")=="Chef de produit")
+		{
+			var supp=document.getElementById('supprimer');
+            supp.parentNode.removeChild(supp);
+			var modif=document.getElementById('modifier');
+			modif.parentNode.removeChild(modif);
+			var addProduct=document.getElementById('addProduct');
+			addProduct.parentNode.removeChild(addProduct);
+			
+		}
+							 }
+</script>
 <div class="container">
 	<div class="row">
 		
         
         <div class="col-md-12">
         <h4>Liste des produits</h4>
-        <a href="addProduct.html" class="btn btn-primary" >Ajouter un nouveau produit</a>
+        <a id="addProduct" href="addProduct.html" class="btn btn-primary" >Ajouter un nouveau produit</a>
         <div class="table-responsive">
 
 
       <table id="myTable" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
-              <th>Id</th>
+	<th>Id</th>
               <th>Nom de produit</th>
               <th>Date d'insertion</th>
               <th>Date de modification</th>
-              <th>Modifier</th>
-              <th>Supprimer</th>
+              <th id="modifier">Modifier</th>
+              <th id="supprimer">Supprimer</th>
               <th>Ajouter Contenu</th>
               <th>Afficher Contenu</th>
               
@@ -148,12 +161,12 @@
       </div>
           <div class="modal-body">
        
-       <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Êtes-vous sûr de vouloir supprimer ce produit?</div>
+       <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span>Veuillez noter que la suppression de produit entrainera la suppression des toutes les articles et les prez qui sont liées , Êtes-vous sûr de vouloir supprimer ce produit?</div>
        
       </div>
         <div class="modal-footer ">
         <button type="button" id="btnConfirmDelete" data-dismiss="modal" class="btn btn-success" onclick="Javascript:deleteRow(sessionStorage.getItem('selectedRowIndex'),sessionStorage.getItem('idProduit'));"><span class="glyphicon glyphicon-ok-sign"></span> Oui</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Non</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Non</button>
       </div>
         </div>
     <!-- /.modal-content --> 

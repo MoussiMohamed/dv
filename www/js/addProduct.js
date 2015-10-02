@@ -10,7 +10,7 @@ $("document").ready(function(){
     	
       type: "POST",
       dataType: "json",
-      url: "http://127.0.0.1:8880/e_advRes/www/server/addProduct.php", //Relative or absolute path to response.php file
+      url: "../E-adv/server/addProduct.php", //Relative or absolute path to response.php file
       data: data,
       success: function(data) {
       	var d = $.parseJSON(JSON.stringify(data)).response;

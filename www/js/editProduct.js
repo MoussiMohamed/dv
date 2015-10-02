@@ -51,7 +51,7 @@ function doEditProduct(){
 	 // Create our XMLHttpRequest object
     updReq = getXMLHttp();
     // Create some variables we need to send to our PHP file
-    var url = "http://127.0.0.1:8880/e_advRes/www/server/editProduct.php";
+    var url = "../E-adv/server/editProduct.php";
     var id_Prod = sessionStorage.getItem("id_Produit");
     var nameProduct = document.getElementById("nameProduct").value;
     var vars = "id_Product="+id_Prod+"&nameProduct="+nameProduct;

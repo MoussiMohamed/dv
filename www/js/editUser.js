@@ -1,4 +1,4 @@
-function getXMLHttp()
+﻿function getXMLHttp()
 {
   var xmlHttp
 
@@ -40,12 +40,18 @@ function changeScreanToEdit(id_User){
 	var elemt = table.rows[index].cells[0].innerHTML;
 	var elemtName = table.rows[index].cells[1].innerHTML;
 	var elemtSurname = table.rows[index].cells[2].innerHTML;
-	var elemtEmail = table.rows[index].cells[3].innerHTML;
-	var elemtPassword = table.rows[index].cells[4].innerHTML;
+	var elemtTel = table.rows[index].cells[3].innerHTML;
+	var elemtFax = table.rows[index].cells[4].innerHTML;
+	var elemtAdresse = table.rows[index].cells[5].innerHTML;
+	var elemtEmail = table.rows[index].cells[6].innerHTML;
+	var elemtPassword = table.rows[index].cells[7].innerHTML;
 	// Store
 sessionStorage.setItem("id_User", elemt);
 sessionStorage.setItem("name", elemtName);
 sessionStorage.setItem("surname", elemtSurname);
+sessionStorage.setItem("tel", elemtTel);
+sessionStorage.setItem("fax", elemtFax);
+sessionStorage.setItem("adresse", elemtAdresse);
 sessionStorage.setItem("email", elemtEmail);
 sessionStorage.setItem("password", elemtPassword);
 
@@ -55,13 +61,16 @@ function doEditUser(){
 	 // Create our XMLHttpRequest object
     updReq = getXMLHttp();
     // Create some variables we need to send to our PHP file
-    var url = "http://127.0.0.1:8880/e_advRes/www/server/editUser.php";
+    var url = "../E-adv/server/editUser.php";
     var id_Usr = sessionStorage.getItem("id_User");
     var name = document.getElementById("name").value;
     var surname = document.getElementById("surname").value;
+    var tel = document.getElementById("tel").value;
+    var fax = document.getElementById("fax").value;
+    var adresse = document.getElementById("adresse").value;
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
-    var vars = "id_Usr="+id_Usr+"&name="+name+"&surname="+surname+"&email="+email+"&password="+password;
+    var vars = "id_Usr="+id_Usr+"&name="+name+"&surname="+surname+"&tel="+tel+"&fax="+fax+"&adresse="+adresse+"&email="+email+"&password="+password;
     
 	updReq.open('POST', url, true);
         updReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -85,9 +94,12 @@ function doGetDataForEdit(){
 		//window.location.replace("index.html","_top");
 		sessionStorage.clear();
 	}
-	 document.getElementById("id_user").innerHTML = sessionStorage.getItem("id_User");
+	 
     document.getElementById("name").value = sessionStorage.getItem("name");
     document.getElementById("surname").value = sessionStorage.getItem("surname");
+    document.getElementById("tel").value = sessionStorage.getItem("tel");
+    document.getElementById("fax").value = sessionStorage.getItem("fax");
+    document.getElementById("adresse").value = sessionStorage.getItem("adresse");
     document.getElementById("email").value = sessionStorage.getItem("email");
     document.getElementById("password").value = sessionStorage.getItem("password");
 }

@@ -1,16 +1,22 @@
-$("document").ready(function(){
+﻿$("document").ready(function(){
 	if(sessionStorage.getItem("UserLogged") == null){
 		alert("Permission non accordée !\nVeuillez saisir vos paramètres d'accès");
 		
 		window.location.replace("index.html");
 		sessionStorage.clear();
 	}else{
+
   $("#register-form").submit(function(){
+
     var data = {
       "name": $("#name").val(),
       "surname": $("#surname").val(),
+      "tel": $("#tel").val(),
+      "fax": $("#fax").val(),
+      "adresse": $("#adresse").val(),
       "email": $("#email").val(),
       "password": $("#password").val(),
+      "role": $("#role").val()
     };
     
     //data = $(this).serialize() + "&" + $.param(data);
@@ -18,7 +24,7 @@ $("document").ready(function(){
     	
       type: "POST",
       dataType: "json",
-      url: "http://127.0.0.1:8880/e_advRes/www/server/manage_user.php", //Relative or absolute path to response.php file
+      url: "../E-adv/server/manage_user.php", //Relative or absolute path to response.php file
       data: data,
       success: function(data) {
       	var d = $.parseJSON(JSON.stringify(data)).response;

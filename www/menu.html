@@ -2,103 +2,265 @@
 <html>
 	<head>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
- 
-  <style>
-    /* following three (cascaded) are equivalent to above three meta viewport statements */
-    /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html */
-    /* see http://dev.w3.org/csswg/css-device-adapt/ */
-        @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
-        @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
-        /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
-    </style>
-    <title>menu</title>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+
+		<style>
+			/* following three (cascaded) are equivalent to above three meta viewport statements */
+			/* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html */
+			/* see http://dev.w3.org/csswg/css-device-adapt/ */
+			@-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+			@-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+			/*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+		body{margin-top:50px;}
+.glyphicon { margin-right:10px; }
+.panel-body { padding:0px; }
+.panel-body table tr td { padding-left: 15px }
+.panel-body .table {margin-bottom: 0px; }
+        </style>
+        
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+		<title>menu</title>
 	</head>
-<body bgcolor="#f5f5f5">
-	<style>
-		 p, ul, li, div, nav
-        {
+	<body onload="checkAutorization()">
+		<!--<style>
+			p, ul, li, div, nav {
 
-            padding:0;
-            margin:0;
-        }
+				padding: 0;
+				margin: 0;
+			}
 
-
-        body
+			
+			 body
         {
             font-family:Calibri;
         }
 
 
-        #menu {
-            overflow: auto;
-            position:relative;
-            z-index:2;
-            margin:-8px;
-        }
+			#menu {
+				overflow: auto;
+				position: relative;
+				z-index: 2;
+				margin: -8px;
+			}
 
+			.parent-menu {
+				background-color: #0c8fff;
+				/*min-width:15%;
+				 max-width:85%;
+				 */
+				width: 100%;
+				float: left;
+			}
 
-        .parent-menu {
-            background-color: #0c8fff;
-            /*min-width:15%;
-            max-width:85%;
-            */
-           width:100%;
-           float:left;
-        }
+			#menu ul {
+				list-style-type: none;
+			}
 
+			#menu ul li a {
 
-        #menu ul
-        {
-            list-style-type:none;
-        }
+				padding: 10px 15px;
+				display: block;
+				color: #fff;
+				text-decoration: none;
+				font-weight: bold;
+			}
 
+			#menu ul li a:hover {
+				background-color: #007ee9;
+			}
 
-        #menu ul li a
-        {
+		</style>-->
+		<script type="text/javascript">
+		function checkAutorization() {
+			var role=sessionStorage.getItem("roleLogged");
+			switch(role) {
+    case "Chef de produit":
+	document.getElementById('compte').style.display="none";
+	document.getElementById('rapport').style.display="none";
+	document.getElementById('commentaire').style.display="none";
+	document.getElementById('medecin').style.display="none";
+	document.getElementById('region').style.display="none";
+        break;
+    
+    default:
+        return true;
+}
 
-            padding:10px 15px;
-            display:block;
-            color:#fff;
-            text-decoration:none;
-            font-weight: bold;
-            
-        }
+		}
+		</script>
 
+		<!--<nav id="menu">
 
-            #menu ul li a:hover
-            {
-                background-color:#007ee9;
-            }
+			<ul class="parent-menu">
 
+				<li id="compte">
+					<a href="home.html" target="main_page">Comptes</a>
 
-	</style>
+				</li>
+				<li id="produit">
+					<a href="listProduct.html" target="main_page">Produits</a>
 
-<nav id="menu">
+				</li>
+				<li id="commentaire">
+					<a href="commentaire.html" target="main_page">Commentaires</a>
 
-        <ul class="parent-menu">
+				</li>
+				<li id="rapport">
+					<a href="statistique.html" target="main_page">Rapports</a>
 
-            <li><a href="home.html" target="main_page">Comptes</a>
+				</li>
 
+				<li id="medecin">
+					<a href="listDoctor.html" target="main_page">Gestion Médecins</a>
+
+				</li>
+
+				<li id="region">
+					<a href="listRegion.html" target="main_page">Gestion Régions</a>
+
+				</li>
+
+			</ul>
+
+		</nav>-->
+        
+        <div class="container">
+    <div class="row">
+        <div style="width:100%">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-folder-close">
+                            </span>Produits</a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-tasks"></span><a href="listProduct.html" target="main_page">Afficher</a>
+                                    </td>
+                                </tr>
+                            
+                                <tr id="commentaire">
+                                    <td>
+                                        <span class="glyphicon glyphicon-comment text-success"></span><a href="commentaire.html" target="main_page">Commentaires</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th">
+                            </span>Modules</a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table class="table">
+                               <!-- <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Orders</a> <span class="label label-success">$ 320</span>
+                                    </td>
+                                </tr>-->
+                                <tr>
+                                    <td>
+                                        <a href="affecterRegion.html" target="main_page">Affecter région</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="affecterProduit.html" target="main_page">Affecter produit</a>
+                                    </td>
+                                </tr>
+                                <tr id="medecin">
+                                    <td>
+                                        <a href="listDoctor.html" target="main_page">Médecin</a>
+                                    </td>
+                                </tr>
+                                <tr id="region">
+                                    <td>
+                                        <a href="listRegion.html" target="main_page">Région</a>
+                                    </td>
+                                </tr>
+                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="compte" class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-user">
+                            </span>Comptes</a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <a href="inscription.html" target="main_page"><i class="icon-edit"></i>Ajouter</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="home.html" target="main_page">Afficher</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-pencil text-primary"></span><a href="home.html" target="main_page">Modifier</a> <!--<span class="label label-info">5</span>-->
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-trash text-danger"></span><a href="home.html" target="main_page" class="text-danger">
+                                            Supprimer</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="rapport" class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-file">
+                            </span>Rapports</a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table class="table">
+                               
+                              
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-tasks"></span><a href="statistique.html" target="main_page">Délegué</a>
+                                    </td>
+                                </tr>
+                               
+                            </table>
+                        </div>
+                    </div>
+                </div>
                 
+            </div>
+        </div>
+        
+    </div>
+</div>
 
-            </li>
-
-            <li><a href="listProduct.html" target="main_page">Produits</a>
-
-                </li>
-
-            <li><a href="listProduct.html" target="main_page">Contenu</a>
-
-              </li>
-
-            
-
-            
-
-        </ul>
-
-    </nav>
-
-</body>
+        
+	</body>
 </html>
