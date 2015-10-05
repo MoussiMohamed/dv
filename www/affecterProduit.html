@@ -59,11 +59,12 @@
 <div class="container">
 	<div class="row">
 		
-        
+        <div class="col-md-12">
+      <h4 class="text-info">Veuillez choisir un chef de produit pour lui affecter à un ou plusieurs produit</h4>
         <div class="col-md-6">
         <h4>Liste des chefs des produits</h4>
         
-        <div>
+       
 
       <table id="myTable" class="display" cellspacing="0" width="30%">
         <thead>
@@ -81,7 +82,7 @@
                     
             </div>
             
-            <div style="position: relative; left: 570px; top: -293px;">
+            <div class="col-md-6" style="width:47%; left:7%">
 <h4>Liste des produits</h4>
       <table id="myTableProduit" class="display" cellspacing="0" width="30%">
         <thead>
@@ -94,10 +95,11 @@
         </thead>
  
     </table>
-                    
+                  <button name="btnAffecterProduit" id="btnAffecterProduit" class="btn btn-success" onClick="getvalue_func()">Valider</button>
+			<button name="btnAnnuler" id="btnAnnuler" class="btn btn-danger">Annuler</button>  
             </div>
-            <button name="btnAffecterProduit" id="btnAffecterProduit" class="btn btn-success" onClick="getvalue_func()">Valider</button>
-			<button name="btnAnnuler" id="btnAnnuler" class="btn btn-warning">Annuler</button>
+            
+            </div>
         </div>
 	</div>
 </div>
